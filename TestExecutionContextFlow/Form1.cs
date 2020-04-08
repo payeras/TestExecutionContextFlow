@@ -24,16 +24,18 @@ namespace TestExecutionContextFlow
         private void button1_Click(object sender, EventArgs e)
         {
             Thread.CurrentPrincipal = new GenericPrincipal(new GenericIdentity("User1"), new string[] { });
+            //AppDomain.CurrentDomain.SetThreadPrincipal(Thread.CurrentPrincipal);
             textBox1.Text += $"Logged User: {Thread.CurrentPrincipal.Identity.Name}" + Environment.NewLine;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            cancelThread.Abort();
-            textBox1.Text += $"abort Thread" + Environment.NewLine;
-            Application.DoEvents();
+            //cancelThread.Abort();
+            //textBox1.Text += $"abort Thread" + Environment.NewLine;
+            //Application.DoEvents();
 
             Thread.CurrentPrincipal = new GenericPrincipal(new GenericIdentity("User2"), new string[] { });
+
             textBox1.Text += $"Logged User: {Thread.CurrentPrincipal.Identity.Name}" + Environment.NewLine;
             
         }
